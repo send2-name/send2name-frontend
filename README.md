@@ -1,4 +1,4 @@
-# Vue 3 Dapp Starter
+# Send2.name frontend
 
 ## Features
 - [Vue 3](https://v3.vuejs.org/guide/introduction.html#what-is-vue-js) as the foundation

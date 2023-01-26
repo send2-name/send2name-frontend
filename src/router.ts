@@ -1,6 +1,5 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Home from './views/Home.vue';
 
 // For info on using Vue Router with the Composition API, see https://next.router.vuejs.org/guide/advanced/composition-api.html
 
@@ -9,11 +8,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Home',
     component: Home,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About,
   },
   // Fallback route for handling 404s
   {

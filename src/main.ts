@@ -4,7 +4,7 @@ import router from './router'
 import { VueDapp } from 'vue-dapp'
 import { ethers } from 'ethers'
 
-import './style.css'
+import './assets/css/custom.css'
 
 const app = createApp(App)
 

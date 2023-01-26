@@ -1,6 +1,6 @@
 {
-	"short_name": "vue3-dapp-starter",
-	"name": "Vue 3 Dapp starter",
+	"short_name": "send2name-frontend",
+	"name": "Send2.name",
 	"description": "Vue 3 Dapp starter for testing Safe App",
 	"icons": [
 		{
