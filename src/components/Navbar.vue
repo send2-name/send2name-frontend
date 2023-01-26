@@ -16,8 +16,13 @@
           <button class="btn btn-primary">About</button>
         </li>
 
-        <li class="nav-item dropdown">
-          <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+        <li v-if="isActivated" class="nav-item dropdown">
+          <button 
+						class="btn btn-primary dropdown-toggle" 
+						data-bs-toggle="dropdown" type="button" 
+						aria-haspopup="true" aria-expanded="false"
+					>{{ getChainName(chainId) }}</button>
+
           <div class="dropdown-menu dropdown-menu-end">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -26,6 +31,10 @@
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
         </li>
+
+				<li class="nav-item">
+					<button v-if="!isActivated" class="btn btn-primary" @click="open">Connect wallet</button>
+				</li>
 
       </ul>
 
@@ -36,21 +45,27 @@
 
 <script>
 import { useBoard, useEthers, useWallet, shortenAddress } from 'vue-dapp';
+import useChainHelpers from "../composables/useChainHelpers";
 
 export default {
   name: "Navbar",
 
   setup() {
     const { open } = useBoard();
-		const { address, isActivated } = useEthers();
+		const { address, chainId, isActivated } = useEthers();
 		const { disconnect } = useWallet();
+		const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
 
 		return {
 			address,
+			chainId,
 			disconnect,
+			getChainName,
+			getSupportedChains,
 			isActivated,
 			open,
-			shortenAddress
+			shortenAddress,
+			switchNetwork
 		}
   },
 }
