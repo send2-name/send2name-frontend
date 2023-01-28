@@ -14,6 +14,8 @@
 import Navbar from './components/Navbar.vue';
 import { MetaMaskConnector, WalletConnectConnector, CoinbaseWalletConnector } from 'vue-dapp';
 import rpcs from './data/rpcs.json';
+import { useUserStore } from './store/user';
+import { useEthers } from 'vue-dapp';
 
 export default {
   name: "App",
@@ -23,6 +25,9 @@ export default {
 	},
 
   setup() {
+		const { address, chainId } = useEthers();
+		const userStore = useUserStore();
+
 		let connectors = [
 			new MetaMaskConnector({
 				appUrl: 'http://localhost:3000',
@@ -46,10 +51,27 @@ export default {
 		}
 
 		return {
+			address,
 			autoConnectErrorHandler,
+			chainId,
 			connectErrorHandler,
-			connectors
+			connectors,
+			userStore
 		}
   },
+
+	watch: {
+		address(newVal, oldVal) {
+      if (newVal) {
+        this.userStore.setDefaultDomain();
+      }
+    },
+
+    chainId(newVal, oldVal) {
+      if (newVal) {
+        this.userStore.setDefaultDomain();
+      }
+    },
+	}
 }
 </script>

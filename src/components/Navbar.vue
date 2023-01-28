@@ -21,6 +21,19 @@
 						class="btn btn-primary dropdown-toggle" 
 						data-bs-toggle="dropdown" type="button" 
 						aria-haspopup="true" aria-expanded="false"
+					>{{ getDomainOrAddress }}</button>
+
+          <div class="dropdown-menu dropdown-menu-end">
+            <span class="dropdown-item">{{ shortenAddress(address) }}</span>
+            <span class="dropdown-item" @click="disconnect">Disconnect</span>
+          </div>
+        </li>
+
+        <li v-if="isActivated" class="nav-item dropdown">
+          <button 
+						class="btn btn-primary dropdown-toggle" 
+						data-bs-toggle="dropdown" type="button" 
+						aria-haspopup="true" aria-expanded="false"
 					>{{ getChainName(chainId) }}</button>
 
           <div class="dropdown-menu dropdown-menu-end">
@@ -46,15 +59,27 @@
 <script>
 import { useBoard, useEthers, useWallet, shortenAddress } from 'vue-dapp';
 import useChainHelpers from "../composables/useChainHelpers";
+import { useUserStore } from '../store/user';
 
 export default {
   name: "Navbar",
+
+  computed: {
+    getDomainOrAddress() {
+      if (this.userStore.getDefaultDomain) {
+        return this.userStore.getDefaultDomain;
+      } else {
+        return shortenAddress(this.address);
+      }
+    }
+  },
 
   setup() {
     const { open } = useBoard();
 		const { address, chainId, isActivated } = useEthers();
 		const { disconnect } = useWallet();
 		const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
+    const userStore = useUserStore();
 
 		return {
 			address,
@@ -65,7 +90,8 @@ export default {
 			isActivated,
 			open,
 			shortenAddress,
-			switchNetwork
+			switchNetwork,
+      userStore
 		}
   },
 }
