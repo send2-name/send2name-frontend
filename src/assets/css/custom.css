@@ -1,1 +1,5 @@
 @import "./bootstrap.css";
+
+.navbar-img {
+  height: 26px;
+}

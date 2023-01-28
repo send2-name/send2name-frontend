@@ -2,7 +2,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
 
-    <a class="navbar-brand" href="#">Send2.name</a>
+    <router-link to="/" class="navbar-brand">
+      <img class="img-fluid navbar-img" src="../assets/img/logo.svg">
+    </router-link>
+
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

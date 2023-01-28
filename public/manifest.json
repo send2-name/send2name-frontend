@@ -4,7 +4,7 @@
 	"description": "Vue 3 Dapp starter for testing Safe App",
 	"icons": [
 		{
-			"src": "favicon.ico",
+			"src": "favicon2.svg",
 			"sizes": "32x32",
 			"type": "image/x-icon"
 		}
