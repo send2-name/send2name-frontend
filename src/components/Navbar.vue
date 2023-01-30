@@ -15,9 +15,11 @@
 
       <ul class="navbar-nav ms-auto">
 
+        <!--
         <li class="nav-item">
           <button class="btn btn-primary">About</button>
         </li>
+        -->
 
         <li v-if="isActivated" class="nav-item dropdown">
           <button 
@@ -49,7 +51,7 @@
 						aria-haspopup="true" aria-expanded="false"
 					>{{ getDomainOrAddress }}</button>
 
-          <div class="dropdown-menu dropdown-menu-end">
+          <div class="dropdown-menu dropdown-menu-end set-cursor-pointer">
             <span class="dropdown-item">{{ shortenAddress(address) }}</span>
             <span class="dropdown-item" @click="disconnect">Disconnect</span>
           </div>
