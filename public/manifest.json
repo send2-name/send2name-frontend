@@ -1,7 +1,7 @@
 {
 	"short_name": "send2name-frontend",
 	"name": "Send2.name",
-	"description": "Vue 3 Dapp starter for testing Safe App",
+	"description": "Send tokens to any web3 domain.",
 	"icons": [
 		{
 			"src": "favicon2.svg",

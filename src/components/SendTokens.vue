@@ -112,6 +112,7 @@
 
 <script>
 import useChainHelpers from "../composables/useChainHelpers";
+import Erc20Abi from "../data/abi/Erc20Abi.json";
 import tokens from "../data/tokens.json";
 import { ethers } from 'ethers';
 import { useEthers } from 'vue-dapp';
@@ -214,8 +215,6 @@ export default {
 
   methods: {
     changeNetwork(networkName) {
-      document.activeElement.blur(); // close the Daisy UI dropdown
-
       const networkData = this.switchNetwork(networkName); 
 
       window.ethereum.request({ 
@@ -227,9 +226,13 @@ export default {
     async getTokenBalance(tokenName) {
       const tokenAddr = this.getTokens[tokenName];
 
+      console.log("getTokenBalance")
+
       if (tokenAddr === "0x0") { // ETH or other chain native token
+        console.log("native coin")
         this.tokenBalance = ethers.utils.formatEther(this.balance); // ETH or other chain native token
       } else {
+        console.log("erc20 token")
         const intfc = new ethers.utils.Interface(Erc20Abi);
         const tokenContract = new ethers.Contract(tokenAddr, intfc, this.signer);
         const balanceWei = await tokenContract.balanceOf(this.address);
@@ -249,29 +252,34 @@ export default {
     },
 
     setData() {
-      if (this.isActivated && this.getTokens) {
+      if (this.getTokens) {
         this.selectedToken = Object.keys(this.getTokens)[0];
-        //this.tokenBalance = this.getUserBalance;
-        //this.getTokenBalance(this.selectedToken);
+
+        if (this.isActivated) {
+          this.getTokenBalance(this.selectedToken);
+        }
+        
       }
     }
   },
 
   setup() {
-    const { address, chainId, isActivated } = useEthers();
+    const { address, balance, chainId, isActivated, signer } = useEthers();
     const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
 
-    return { address, chainId, getChainName, getSupportedChains, isActivated, switchNetwork }
+    return { address, balance, chainId, getChainName, getSupportedChains, isActivated, signer, switchNetwork }
   },
 
   watch: {
     address() {
       this.setData();
     },
-    balance() {
+
+    chainId() {
       this.setData();
     },
-    getChainId() {
+    
+    isActivated() {
       this.setData();
     }
   }
@@ -280,6 +288,15 @@ export default {
 </script>
 
 <style scoped>
+#balance {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#balance:hover {
+  text-decoration: none;
+}
+
 .send-tokens-card {
   width: 500px;
   margin-top: 25px;

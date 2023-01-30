@@ -21,14 +21,24 @@
 
         <li v-if="isActivated" class="nav-item dropdown">
           <button 
-						class="btn btn-primary dropdown-toggle" 
+						class="btn btn-primary dropdown-toggle network-dropdown" 
 						data-bs-toggle="dropdown" type="button" 
 						aria-haspopup="true" aria-expanded="false"
-					>{{ getDomainOrAddress }}</button>
+					>{{ getChainName(chainId) }}</button>
 
-          <div class="dropdown-menu dropdown-menu-end">
-            <span class="dropdown-item">{{ shortenAddress(address) }}</span>
-            <span class="dropdown-item" @click="disconnect">Disconnect</span>
+          <div class="dropdown-menu p-2 dropdown-menu-end set-cursor-pointer">
+            <input 
+              class="form-control mb-2" 
+              placeholder="Find network"
+              v-model="filterNetwork" 
+            />
+
+            <span 
+              class="dropdown-item"
+              v-for="networkName in getNetworks"
+              :key="networkName"
+              @click="changeNetwork(networkName)"
+            >{{networkName}}</span>
           </div>
         </li>
 
@@ -37,14 +47,11 @@
 						class="btn btn-primary dropdown-toggle" 
 						data-bs-toggle="dropdown" type="button" 
 						aria-haspopup="true" aria-expanded="false"
-					>{{ getChainName(chainId) }}</button>
+					>{{ getDomainOrAddress }}</button>
 
           <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+            <span class="dropdown-item">{{ shortenAddress(address) }}</span>
+            <span class="dropdown-item" @click="disconnect">Disconnect</span>
           </div>
         </li>
 
@@ -67,6 +74,12 @@ import { useUserStore } from '../store/user';
 export default {
   name: "Navbar",
 
+  data() {
+    return {
+      filterNetwork: null,
+    }
+  },
+
   computed: {
     getDomainOrAddress() {
       if (this.userStore.getDefaultDomain) {
@@ -74,7 +87,28 @@ export default {
       } else {
         return shortenAddress(this.address);
       }
-    }
+    },
+
+    getNetworks() {
+      const networkNames = this.getSupportedChains();
+
+      if (this.filterNetwork) {
+        return networkNames.filter(item => item.includes(this.filterNetwork.toUpperCase())); //filtered
+      }
+
+      return networkNames;
+    },
+  },
+
+  methods: {
+    changeNetwork(networkName) {
+      const networkData = this.switchNetwork(networkName); 
+
+      window.ethereum.request({ 
+        method: networkData.method, 
+        params: networkData.params
+      });
+    },
   },
 
   setup() {
@@ -99,3 +133,13 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.network-dropdown {
+  text-transform: lowercase;
+}
+
+.network-dropdown::first-letter {
+  text-transform: uppercase;
+}
+</style>

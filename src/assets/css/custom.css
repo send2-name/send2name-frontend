@@ -3,3 +3,7 @@
 .navbar-img {
   height: 26px;
 }
+
+.set-cursor-pointer {
+  cursor: pointer;
+}
