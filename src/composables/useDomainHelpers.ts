@@ -9,6 +9,12 @@ const { getFallbackProvider } = useChainHelpers();
 
 export default function useDomainHelpers() {
 
+  async function getEnsDomain(address) {
+    let provider = getFallbackProvider("1"); // get Ethereum provider
+
+    return provider.lookupAddress(address);
+  }
+
   async function getPunkDomain(address) {
     let defaultDomain = null;
 
@@ -20,6 +26,8 @@ export default function useDomainHelpers() {
 
     if (!defaultDomain) {
       for (let netId in resolvers) {
+        console.log("Punk Domain search on chain with ID", netId);
+
         if (Number(netId) != chainId.value) {
           let provider = getFallbackProvider(netId);
           let contractResolver = new ethers.Contract(resolvers[netId], intfc, provider);
@@ -27,7 +35,7 @@ export default function useDomainHelpers() {
           defaultDomain = await contractResolver.getFirstDefaultDomain(address);
 
           if (defaultDomain) {
-            console.log("Default domain", defaultDomain ,"found on chain", netId);
+            console.log("Default punk domain", defaultDomain ,"found on chain", netId);
             break;
           }
         }
@@ -39,6 +47,7 @@ export default function useDomainHelpers() {
 
   // RETURN
   return {
+    getEnsDomain,
     getPunkDomain
   }
 }

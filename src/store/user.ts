@@ -1,14 +1,9 @@
 import { defineStore } from 'pinia';
-import { ethers } from 'ethers';
 import { useEthers } from 'vue-dapp';
-import ResolverAbi from "../data/abi/ResolverAbi.json";
-import resolvers from '../data/resolvers.json';
-import useChainHelpers from "../composables/useChainHelpers";
 import useDomainHelpers from "../composables/useDomainHelpers";
 
-const { address, balance, chainId, signer } = useEthers();
-const { getFallbackProvider } = useChainHelpers();
-const { getPunkDomain } = useDomainHelpers();
+const { address, chainId } = useEthers();
+const { getEnsDomain, getPunkDomain } = useDomainHelpers();
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -17,57 +12,51 @@ export const useUserStore = defineStore({
     return {
       address: null,
       chainId: null,
-      defaultDomain: null
+      defaultDomain: null,
+      domainSearchStatus: false // is a domain search for the connected user in progress?
     }
   },
 
   getters: {
     getDefaultDomain(state) {
       return state.defaultDomain;
-    }
+    },
+
+    getDomainSearchStatus(state) {
+      return state.domainSearchStatus;
+    },
   },
 
   actions: {
     async setDefaultDomain() {
       if (this.address != address.value || this.chainId != chainId.value) {
+        this.domainSearchStatus = true;
+
+        console.log("start searching for domain");
         this.defaultDomain = null;
         this.address = address.value;
         this.chainId = chainId.value;
 
-        console.log("setDefaultDomain");
+        console.log("start Punk Domain (PD) search");
 
+        // first check if user owns a punk domain
         this.defaultDomain = await getPunkDomain(this.address);
 
-        console.log("setDefaultDomain:", this.defaultDomain);
-        
-        /*
-        const intfc = new ethers.utils.Interface(ResolverAbi);
-        const contract = new ethers.Contract(resolvers[this.chainId], intfc, signer.value);
-
-        // check if user owns a PD on a currently connected chain
-        this.defaultDomain = await contract.getFirstDefaultDomain(this.address);
+        console.log("PD search result:", this.defaultDomain);
 
         if (!this.defaultDomain) {
-          for (let netId in resolvers) {
-            if (netId != this.chainId) {
-              let provider = getFallbackProvider(netId);
-              let contractResolver = new ethers.Contract(resolvers[netId], intfc, provider);
+          console.log("Start ENS search");
 
-              this.defaultDomain = await contractResolver.getFirstDefaultDomain(this.address);
+          // ENS
+          this.defaultDomain = await getEnsDomain(this.address);
 
-              if (this.defaultDomain) {
-                console.log("Default domain", this.defaultDomain ,"found on chain", netId);
-                break;
-              }
-            }
-          }
-        }
+          console.log("ENS search result:", this.defaultDomain);
 
-        if (!this.defaultDomain) {
           // @todo
-          // if still not found, check ENS & UD
+          // if no ENS domain found, check UD
         }
-        */
+        
+        this.domainSearchStatus = false;
       }
       
     }

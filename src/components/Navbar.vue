@@ -49,7 +49,10 @@
 						class="btn btn-primary dropdown-toggle" 
 						data-bs-toggle="dropdown" type="button" 
 						aria-haspopup="true" aria-expanded="false"
-					>{{ getDomainOrAddress }}</button>
+					>
+            {{ getDomainOrAddress }}
+            <span v-if="userStore.getDomainSearchStatus" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          </button>
 
           <div class="dropdown-menu dropdown-menu-end set-cursor-pointer">
             <span class="dropdown-item">{{ shortenAddress(address) }}</span>
