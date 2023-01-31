@@ -56,7 +56,7 @@ export default function useChainHelpers() {
   }
 
   function getFallbackProvider(networkId) {
-    let urls = [rpcs[networkId]];
+    let urls = [rpcs[String(networkId)]];
 
     if (urls) {
       const providers = urls.map(url => new ethers.providers.JsonRpcProvider(url));

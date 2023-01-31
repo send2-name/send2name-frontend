@@ -1,6 +1,7 @@
 import { ethers } from 'ethers';
 import { useEthers } from 'vue-dapp';
 import ResolverAbi from "../data/abi/ResolverAbi.json";
+import domains from '../data/domains.json';
 import resolvers from '../data/resolvers.json';
 import useChainHelpers from "./useChainHelpers";
 
@@ -8,6 +9,34 @@ const { chainId, signer } = useEthers();
 const { getFallbackProvider } = useChainHelpers();
 
 export default function useDomainHelpers() {
+
+  async function getDomainHolder(domain) {
+    const domainParts = domain.toLowerCase().split(".");
+
+    console.log("Domain name:", domainParts[0]);
+    console.log("Domain extension:", domainParts[1]);
+
+    const domainData = domains["."+domainParts[1]];
+    console.log("Domain data:", domainData.protocol);
+
+    if (!domainData) {
+      return null;
+    }
+
+    const provider = getFallbackProvider(domainData.chainId);
+
+    if (domainData.protocol === "ENS") {
+      return provider.resolveName(domain);
+    } else if (domainData.protocol === "PD") {
+      const tldInterface = new ethers.utils.Interface([
+        "function getDomainHolder(string) public view returns(address)"
+      ]);
+
+      const tldContract = new ethers.Contract(domainData.address, tldInterface, provider);
+
+      return tldContract.getDomainHolder(domainParts[0]);
+    }
+  }
 
   async function getEnsDomain(address) {
     let provider = getFallbackProvider("1"); // get Ethereum provider
@@ -47,6 +76,7 @@ export default function useDomainHelpers() {
 
   // RETURN
   return {
+    getDomainHolder,
     getEnsDomain,
     getPunkDomain
   }

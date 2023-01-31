@@ -97,8 +97,7 @@
     <button
       class="btn btn-lg btn-dark mt-4 mb-2"
       :disabled="notValid || waiting"
-      @click="validateDomainName"
-      data-bs-toggle="modal" data-bs-target="#sendTokensModal"
+      @click="showOverviewModal"
     >
       <span v-if="waiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       Send tokens
@@ -112,6 +111,7 @@
 
 <script>
 import useChainHelpers from "../composables/useChainHelpers";
+import useDomainHelpers from "../composables/useDomainHelpers";
 import Erc20Abi from "../data/abi/Erc20Abi.json";
 import tokens from "../data/tokens.json";
 import { ethers } from 'ethers';
@@ -260,14 +260,21 @@ export default {
         }
         
       }
+    },
+
+    async showOverviewModal() {
+      console.log("showOverviewModal");
+      const holder = await this.getDomainHolder(this.receiver);
+      console.log("Holder", holder);
     }
   },
 
   setup() {
     const { address, balance, chainId, isActivated, signer } = useEthers();
     const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
+    const { getDomainHolder } = useDomainHelpers();
 
-    return { address, balance, chainId, getChainName, getSupportedChains, isActivated, signer, switchNetwork }
+    return { address, balance, chainId, getChainName, getDomainHolder, getSupportedChains, isActivated, signer, switchNetwork }
   },
 
   watch: {
