@@ -1,0 +1,16 @@
+{
+	"short_name": "send2name-frontend",
+	"name": "Send2.name",
+	"description": "Send tokens to any web3 domain.",
+	"icons": [
+		{
+			"src": "favicon2.svg",
+			"sizes": "32x32",
+			"type": "image/x-icon"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#ff007a",
+	"background_color": "#fff"
+}
