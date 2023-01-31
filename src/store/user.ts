@@ -4,9 +4,11 @@ import { useEthers } from 'vue-dapp';
 import ResolverAbi from "../data/abi/ResolverAbi.json";
 import resolvers from '../data/resolvers.json';
 import useChainHelpers from "../composables/useChainHelpers";
+import useDomainHelpers from "../composables/useDomainHelpers";
 
 const { address, balance, chainId, signer } = useEthers();
 const { getFallbackProvider } = useChainHelpers();
+const { getPunkDomain } = useDomainHelpers();
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -31,7 +33,14 @@ export const useUserStore = defineStore({
         this.defaultDomain = null;
         this.address = address.value;
         this.chainId = chainId.value;
+
+        console.log("setDefaultDomain");
+
+        this.defaultDomain = await getPunkDomain(this.address);
+
+        console.log("setDefaultDomain:", this.defaultDomain);
         
+        /*
         const intfc = new ethers.utils.Interface(ResolverAbi);
         const contract = new ethers.Contract(resolvers[this.chainId], intfc, signer.value);
 
@@ -58,6 +67,7 @@ export const useUserStore = defineStore({
           // @todo
           // if still not found, check ENS & UD
         }
+        */
       }
       
     }

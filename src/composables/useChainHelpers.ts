@@ -5,9 +5,14 @@ export default function useChainHelpers() {
 
   function getSupportedChains() {
     return [
+      "Arbitrum".toUpperCase(),
+      "BNB Smart Chain".toUpperCase(),
       "Ethereum".toUpperCase(),
-      "Optimism".toUpperCase(),
+      "Fantom".toUpperCase(),
       "Flare".toUpperCase(),
+      "Gnosis Chain".toUpperCase(),
+      "Optimism".toUpperCase(),
+      "Polygon".toUpperCase(),
       "Songbird".toUpperCase()
     ]
   }
