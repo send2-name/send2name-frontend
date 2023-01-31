@@ -15,11 +15,9 @@
 
       <ul class="navbar-nav ms-auto">
 
-        <!--
         <li class="nav-item">
-          <button class="btn btn-primary">About</button>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
         </li>
-        -->
 
         <li v-if="isActivated" class="nav-item dropdown">
           <button 
@@ -69,6 +67,56 @@
     </div>
   </div>
 </nav>
+
+<!-- About modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">About Send2.name</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Send2.name is a web3 app that allows you to send tokens to any supported web3 domain name.</p>
+
+        <p>The code is completely <strong>open source</strong> and <a target="_blank" href="https://github.com/send2-name">available on GitHub</a>.</p>
+
+        <p>The list of supported domains:</p>
+
+        <ul>
+          <li><a target="_blank" href="https://ens.domains">.eth (ENS, Ethereum)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.ape (Punk Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.arbi (Punk Domains, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.arbitrum (Punk Domains, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://app.basin.global">.basin (Basin Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.degen (Punk Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://fantomnames.org">.fantom (Fantom Names, Fantom)</a></li>
+          <li><a target="_blank" href="https://flr.domains">.flr (Flare Domains, Flare)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.gnosis (Punk Domains, Gnosis Chain)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.huwa (Punk Domains, BSC)</a></li>
+          <li><a target="_blank" href="https://www.kns.earth">.klima (KNS, Polygon)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.L2 (Punk Domains, Optimism)</a></li>
+          <li><a target="_blank" href="https://optimistic.domains">.op (Optimistic Domains, Optimism)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.optimism (Punk Domains, Optimism)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.poly (Punk Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://names.pooly.me">.pool (PoolTogether Names, Optimism)</a></li>
+          <li><a target="_blank" href="https://ppl.domains">.ppl (People Domains, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://punk.domains/#/punkangel">.punkangel (Punk Domains, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.safu (Punk Domains, BSC)</a></li>
+          <li><a target="_blank" href="https://id.satraps.io">.satrap (Satrap IDs, Songbird)</a></li>
+          <li><a target="_blank" href="https://sgb.domains">.sgb (Songbird Domains, Songbird)</a></li>
+          <li><a target="_blank" href="https://smol.domains">.smol (Smol Domains, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.spartan (Punk Domains, Optimism)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.wagmi (Punk Domains, Optimism)</a></li>
+          <li><a target="_blank" href="https://twb.punk.domains">.wildbunch (The Wild Bunch Domains, Ethereum)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.xdai (Punk Domains, Gnosis Chain)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
