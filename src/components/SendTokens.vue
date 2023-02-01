@@ -3,14 +3,25 @@
 <div class="card text-white bg-primary mb-3 send-tokens-card">
   <div class="card-body text-center">
 
+    <button
+      v-if="!isActivated" 
+      class="btn btn-primary" 
+      type="button"
+      @click="open" 
+    >
+      Connect wallet
+    </button>
+
     <!-- Select network -->
     <button 
+      v-if="isActivated" 
       class="btn btn-primary dropdown-toggle" 
       type="button" 
       data-bs-toggle="dropdown" 
       aria-expanded="false"
     >
-      SEND ON {{ getChainName(chainId) }}
+      <span v-if="!getChainName(chainId).toLowerCase().startsWith('unsupported')">SEND ON </span>
+      {{ getChainName(chainId) }}
     </button>
     
     <div class="dropdown-menu p-2 dropdown-menu-end">
@@ -115,7 +126,7 @@ import useDomainHelpers from "../composables/useDomainHelpers";
 import Erc20Abi from "../data/abi/Erc20Abi.json";
 import tokens from "../data/tokens.json";
 import { ethers } from 'ethers';
-import { useEthers } from 'vue-dapp';
+import { useBoard, useEthers } from 'vue-dapp';
 
 export default {
   name: "SendTokens",
@@ -270,11 +281,12 @@ export default {
   },
 
   setup() {
+    const { open } = useBoard();
     const { address, balance, chainId, isActivated, signer } = useEthers();
     const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
     const { getDomainHolder } = useDomainHelpers();
 
-    return { address, balance, chainId, getChainName, getDomainHolder, getSupportedChains, isActivated, signer, switchNetwork }
+    return { address, balance, chainId, getChainName, getDomainHolder, getSupportedChains, isActivated, open, signer, switchNetwork }
   },
 
   watch: {

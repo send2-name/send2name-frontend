@@ -73,12 +73,6 @@ export default function useChainHelpers() {
     if (networkName == "Ethereum".toUpperCase()) {
       method = "wallet_switchEthereumChain"
       params = [{ chainId: "0x1" }] 
-    } else if (networkName == "Ropsten".toUpperCase()) {
-      method = "wallet_switchEthereumChain"
-      params = [{ chainId: "0x3" }] 
-    } else if (networkName == "Rinkeby".toUpperCase()) {
-      method = "wallet_switchEthereumChain"
-      params = [{ chainId: "0x4" }] 
     } else if (networkName == "Polygon Testnet".toUpperCase()) {
       method = "wallet_addEthereumChain"
       params = [{ 
