@@ -19,6 +19,10 @@
 						<img src="./assets/img/wallets/metamask.svg" class="card-img-top card-img-wallet" alt="MetaMask">
 					</div>
 
+					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
+						<img src="./assets/img/wallets/bifrost.png" class="card-img-top card-img-wallet" alt="Bifrost">
+					</div> 
+
 					<div class="card col-6 set-cursor-pointer" @click="connectWalletConnect">
 						<img src="./assets/img/wallets/wc.png" class="card-img-top card-img-wallet" alt="Wallet Connect">
 					</div>
@@ -30,6 +34,10 @@
 					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
 						<img src="./assets/img/wallets/rabby.png" class="card-img-top card-img-wallet" alt="Rabby">
 					</div> 
+
+					<div class="card col-6 set-cursor-pointer" @click="connectWalletConnect">
+						<img src="./assets/img/wallets/minerva.png" class="card-img-top card-img-wallet" alt="Minerva">
+					</div>
 				</div>
 			</div>
 		</div>
