@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import WaitingToast from "./WaitingToast.vue";
 import useChainHelpers from "../composables/useChainHelpers";
 import useDomainHelpers from "../composables/useDomainHelpers";
 import Erc20Abi from "../data/abi/Erc20Abi.json";
@@ -147,7 +148,6 @@ export default {
 
   data() {
     return {
-      domainError: null,
       filterNetwork: null,
       filterTokens: null,
       receiver: null,
@@ -156,8 +156,7 @@ export default {
       selectedToken: null,
       selectedTokenDecimals: null,
       tokenAmount: null, // amount to be sent
-      waiting: false,
-      validating: false
+      waiting: false
     }
   },
 
@@ -288,22 +287,156 @@ export default {
     },
 
     async send() {
-      console.log("showOverviewModal");
+      this.waiting = true;
+      
       const holder = await this.getDomainHolder(this.receiver);
-      console.log("Holder", holder);
+      
+      if (!holder || holder === ethers.constants.AddressZero) {
+        this.toast("This name does not have an owner. Sending aborted.", {type: TYPE.ERROR});
+        this.waiting = false;
+        return;
+      }
 
-      this.toast("Holder: "+holder, {type: TYPE.INFO});
-    }
+      if (holder.toLowerCase() === this.address.toLowerCase()) {
+        this.toast("The receiver name is yours. You cannot send tokens to yourself.", {type: TYPE.ERROR});
+        this.waiting = false;
+        return;
+      }
+
+      this.receiverAddress = holder; // set the receiver address
+
+      // send tokens
+      if (this.getTokens[this.selectedToken] === "0x0") {
+        this.sendNativeTokens(); // ETH or other chain native token
+      } else {
+        this.sendErc20Tokens();
+      }
+    },
+
+    async sendErc20Tokens() {
+      
+      try {
+        const sToken = this.selectedToken;
+        const tAmount = this.tokenAmount;
+        const recDomain = this.receiver;
+
+        const valueWei = ethers.utils.parseUnits(tAmount, this.selectedTokenDecimals);
+        const tokenAddr = this.getTokens[sToken];
+        
+        const intfc = new ethers.utils.Interface(Erc20Abi);
+        const tokenContract = new ethers.Contract(tokenAddr, intfc, this.signer);
+
+        const tx = await tokenContract.transfer(this.receiverAddress, valueWei);
+        
+        const toastWait = this.toast(
+          {
+            component: WaitingToast, // @todo
+            props: {
+              text: "Please wait for your transaction to confirm. Click on this notification to see transaction in the block explorer."
+            }
+          },
+          {
+            type: TYPE.INFO,
+            onClick: () => window.open(this.getBlockExplorerBaseUrl(this.chainId)+"/tx/"+tx.hash, '_blank').focus()
+          }
+        );
+
+        const receipt = await tx.wait();
+
+        if (receipt.status === 1) {
+          this.toast.dismiss(toastWait);
+          this.toast("You have successfully sent " + tAmount + " " + sToken + " to " + recDomain + "!", {
+            type: TYPE.SUCCESS,
+            onClick: () => window.open(this.getBlockExplorerBaseUrl(this.chainId)+"/tx/"+tx.hash, '_blank').focus()
+          });
+
+          this.waiting = false;
+          this.getTokenBalance(sToken);
+
+        } else {
+          this.toast.dismiss(toastWait);
+
+          this.toast("Transaction has failed.", {
+            type: TYPE.ERROR,
+            onClick: () => window.open(this.getBlockExplorerBaseUrl(this.chainId)+"/tx/"+tx.hash, '_blank').focus()
+          });
+
+          console.log(receipt);
+          this.waiting = false;
+        }
+      } catch (e) {
+        this.waiting = false;
+        console.log(e);
+        this.toast(e.message, {type: TYPE.ERROR});
+      }
+    },
+
+    async sendNativeTokens() {
+      // ETH or other chain native token
+      this.waiting = true;
+
+      try {
+        const sToken = this.selectedToken;
+        const tAmount = this.tokenAmount;
+        const recDomain = this.receiver;
+        const valueWei = ethers.utils.parseEther(tAmount);
+        
+        const tx = await this.signer.sendTransaction({
+          to: this.receiverAddress,
+          value: valueWei
+        });
+        
+        const toastWait = this.toast(
+          {
+            component: WaitingToast,
+            props: {
+              text: "Please wait for your transaction to confirm. Click on this notification to see transaction in the block explorer."
+            }
+          },
+          {
+            type: TYPE.INFO,
+            onClick: () => window.open(this.getBlockExplorerBaseUrl(this.chainId)+"/tx/"+tx.hash, '_blank').focus()
+          }
+        );
+
+        const receipt = await tx.wait();
+        
+        if (receipt.status === 1) {
+          this.toast.dismiss(toastWait);
+          this.toast("You have successfully sent " + tAmount + " " + sToken + " to " + recDomain + "!", {
+            type: TYPE.SUCCESS,
+            onClick: () => window.open(this.getBlockExplorerBaseUrl(this.chainId)+"/tx/"+tx.hash, '_blank').focus()
+          });
+          this.waiting = false;
+          this.getTokenBalance(sToken);
+        } else {
+          this.toast.dismiss(toastWait);
+          this.toast("Transaction has failed.", {
+            type: TYPE.ERROR,
+            onClick: () => window.open(this.getBlockExplorerBaseUrl(this.chainId)+"/tx/"+tx.hash, '_blank').focus()
+          });
+          console.log(receipt);
+          this.waiting = false;
+        }
+      } catch (e) {
+        this.waiting = false;
+        console.log(e);
+        this.toast(e.message, {type: TYPE.ERROR});
+      }
+    },
   },
 
   setup() {
     const { open } = useBoard();
     const { address, balance, chainId, isActivated, signer } = useEthers();
-    const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
+    const { getBlockExplorerBaseUrl, getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
     const { getDomainHolder } = useDomainHelpers();
     const toast = useToast();
 
-    return { address, balance, chainId, getChainName, getDomainHolder, getSupportedChains, isActivated, open, signer, switchNetwork, toast }
+    return { 
+      address, balance, chainId, getBlockExplorerBaseUrl, getChainName, getDomainHolder, getSupportedChains, 
+      isActivated, open, signer, switchNetwork, toast 
+    }
   },
 
   watch: {

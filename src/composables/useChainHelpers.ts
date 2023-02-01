@@ -1,7 +1,12 @@
 import { ethers } from 'ethers';
 import rpcs from '../data/rpcs.json';
+import explorers from '../data/explorers.json';
 
 export default function useChainHelpers() {
+
+  function getBlockExplorerBaseUrl(networkId) {
+    return explorers[String(networkId)];
+  }
 
   function getSupportedChains() {
     return [
@@ -13,7 +18,8 @@ export default function useChainHelpers() {
       "Gnosis Chain".toUpperCase(),
       "Optimism".toUpperCase(),
       "Polygon".toUpperCase(),
-      "Songbird".toUpperCase()
+      "Songbird".toUpperCase(),
+      "Coston Testnet".toUpperCase()
     ]
   }
 
@@ -24,6 +30,8 @@ export default function useChainHelpers() {
       return "Optimism".toUpperCase();
     } else if (chainId === 14) {
       return "Flare".toUpperCase();
+    } else if (chainId === 16) {
+      return "Coston Testnet".toUpperCase();
     } else if (chainId === 19) {
       return "Songbird".toUpperCase();
     } else if (chainId === 56) {
@@ -227,6 +235,7 @@ export default function useChainHelpers() {
 
   // RETURN
   return {
+    getBlockExplorerBaseUrl,
     getChainName,
     getFallbackProvider,
     getSupportedChains,

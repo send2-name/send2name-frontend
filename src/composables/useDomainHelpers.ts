@@ -46,12 +46,15 @@ export default function useDomainHelpers() {
 
   async function getPunkDomain(address) {
     let defaultDomain = null;
-
     const intfc = new ethers.utils.Interface(ResolverAbi);
-    const contract = new ethers.Contract(resolvers[chainId.value], intfc, signer.value);
+    let resolverAddress = resolvers[chainId.value];
 
-    // check if user owns a PD on a currently connected chain
-    defaultDomain = await contract.getFirstDefaultDomain(address);
+    if (resolverAddress) {
+      const contract = new ethers.Contract(resolvers[chainId.value], intfc, signer.value);
+
+      // check if user owns a PD on a currently connected chain
+      defaultDomain = await contract.getFirstDefaultDomain(address);
+    }
 
     if (!defaultDomain) {
       for (let netId in resolvers) {
