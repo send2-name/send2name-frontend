@@ -250,13 +250,9 @@ export default {
     async getTokenBalance(tokenName) {
       const tokenAddr = this.getTokens[tokenName];
 
-      console.log("getTokenBalance")
-
       if (tokenAddr === "0x0") { // ETH or other chain native token
-        console.log("native coin")
         this.tokenBalance = ethers.utils.formatEther(this.balance); // ETH or other chain native token
       } else {
-        console.log("erc20 token")
         const intfc = new ethers.utils.Interface(Erc20Abi);
         const tokenContract = new ethers.Contract(tokenAddr, intfc, this.signer);
         const balanceWei = await tokenContract.balanceOf(this.address);
@@ -400,7 +396,7 @@ export default {
         );
 
         const receipt = await tx.wait();
-        
+
         if (receipt.status === 1) {
           this.toast.dismiss(toastWait);
           this.toast("You have successfully sent " + tAmount + " " + sToken + " to " + recDomain + "!", {
