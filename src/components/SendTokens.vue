@@ -7,7 +7,8 @@
       v-if="!isActivated" 
       class="btn btn-primary" 
       type="button"
-      @click="open" 
+      data-bs-toggle="modal" 
+      data-bs-target="#connectModal"
     >
       Connect wallet
     </button>
@@ -108,7 +109,7 @@
     <button
       class="btn btn-lg btn-dark mt-4 mb-2"
       :disabled="notValid || waiting"
-      @click="showOverviewModal"
+      @click="send"
     >
       <span v-if="waiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       Send tokens
@@ -127,6 +128,7 @@ import Erc20Abi from "../data/abi/Erc20Abi.json";
 import tokens from "../data/tokens.json";
 import { ethers } from 'ethers';
 import { useBoard, useEthers } from 'vue-dapp';
+import { useToast, TYPE } from "vue-toastification";
 
 export default {
   name: "SendTokens",
@@ -273,10 +275,12 @@ export default {
       }
     },
 
-    async showOverviewModal() {
+    async send() {
       console.log("showOverviewModal");
       const holder = await this.getDomainHolder(this.receiver);
       console.log("Holder", holder);
+
+      this.toast("Holder: "+holder, {type: TYPE.INFO});
     }
   },
 
@@ -285,8 +289,9 @@ export default {
     const { address, balance, chainId, isActivated, signer } = useEthers();
     const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
     const { getDomainHolder } = useDomainHelpers();
+    const toast = useToast();
 
-    return { address, balance, chainId, getChainName, getDomainHolder, getSupportedChains, isActivated, open, signer, switchNetwork }
+    return { address, balance, chainId, getChainName, getDomainHolder, getSupportedChains, isActivated, open, signer, switchNetwork, toast }
   },
 
   watch: {

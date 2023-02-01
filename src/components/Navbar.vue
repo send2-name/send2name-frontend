@@ -59,7 +59,7 @@
         </li>
 
 				<li class="nav-item">
-					<button v-if="!isActivated" class="btn btn-primary" @click="open">Connect wallet</button>
+					<button v-if="!isActivated" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#connectModal">Connect wallet</button>
 				</li>
 
       </ul>

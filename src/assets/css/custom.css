@@ -1,9 +1,29 @@
 @import "./bootstrap.css";
 
+.card-img-wallet:hover {
+  opacity: 0.5;
+}
+
+.card-img-wallet:active {
+  transform: scale(0.8);
+}
+
 .navbar-img {
   height: 26px;
 }
 
 .set-cursor-pointer {
   cursor: pointer;
+}
+
+.Vue-Toastification__toast--info {
+  background-color: #268bd2;
+}
+
+.Vue-Toastification__toast--success {
+  background-color: #2aa198;
+}
+
+.Vue-Toastification__toast--error {
+  background-color: #d33682;
 }
