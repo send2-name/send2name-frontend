@@ -117,6 +117,7 @@
     </div>
   </div>
 </div>
+<!-- END About modal -->
 </template>
 
 <script>
@@ -161,7 +162,7 @@ export default {
         method: networkData.method, 
         params: networkData.params
       });
-    },
+    }
   },
 
   setup() {

@@ -51,27 +51,41 @@ export default {
 		Navbar
 	},
 
+	created() {
+		// if user already connected before, connect them automatically on the next visit
+		if (!this.isActivated) {
+			if (localStorage.getItem("connected") == "metamask") {
+				this.connectMetaMask();
+			} else if (localStorage.getItem("connected") == "walletconnect") {
+				this.connectWalletConnect();
+			} else if (localStorage.getItem("connected") == "coinbase") {
+				this.connectCoinbase();
+			}
+		}
+	},
+
 	methods: {
 		async connectCoinbase() {
 			await this.connectWith(this.coinbaseConnector);
+			localStorage.setItem("connected", "coinbase"); // store in local storage to autoconnect next time
 			document.getElementById('closeConnectModal').click();
 		},
 
 		async connectMetaMask() {
 			await this.connectWith(this.mmConnector);
-			// @todo: store in local storage to autoconnect next time
-
+			localStorage.setItem("connected", "metamask"); // store in local storage to autoconnect next time
 			document.getElementById('closeConnectModal').click();
 		},
 
 		async connectWalletConnect() {
 			await this.connectWith(this.wcConnector);
+			localStorage.setItem("connected", "walletconnect"); // store in local storage to autoconnect next time
 			document.getElementById('closeConnectModal').click();
 		}
 	},
 
   setup() {
-		const { address, chainId } = useEthers();
+		const { address, chainId, isActivated } = useEthers();
 		const { connectWith } = useWallet();
 		const userStore = useUserStore();
 
@@ -94,6 +108,7 @@ export default {
 			chainId,
 			coinbaseConnector,
 			connectWith,
+			isActivated,
 			mmConnector,
 			wcConnector,
 			userStore
@@ -112,6 +127,12 @@ export default {
         this.userStore.setDefaultDomain();
       }
     },
+
+		isActivated(newVal, oldVal) {
+			if (oldVal === true && newVal === false) { // if user disconnects, clear the local storage
+				localStorage.clear();
+			}
+		}
 	}
 }
 </script>
