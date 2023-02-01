@@ -56,7 +56,7 @@
     </div>
     <!-- END Recipient -->
 
-    <!-- Tokens -->
+    <!-- Token amount -->
     <div class="input-group mt-3">
       <input 
         type="text" 
@@ -94,7 +94,7 @@
         </div>
       </div>
     </div>
-    <!-- END tokens -->
+    <!-- END Token amount -->
 
     <!-- Balance -->
     <div>
@@ -107,6 +107,7 @@
 
     <!-- Send button -->
     <button
+      v-if="isActivated"
       class="btn btn-lg btn-dark mt-4 mb-2"
       :disabled="notValid || waiting"
       @click="send"
@@ -115,6 +116,17 @@
       Send tokens
     </button>
     <!-- END send button -->
+
+    <!-- Connect wallet button -->
+    <button
+      v-if="!isActivated"
+      class="btn btn-lg btn-dark mt-4 mb-2"
+      data-bs-toggle="modal" 
+      data-bs-target="#connectModal"
+    >
+      Connect wallet
+    </button>
+    <!-- END Connect wallet button -->
 
   </div>
 </div>
