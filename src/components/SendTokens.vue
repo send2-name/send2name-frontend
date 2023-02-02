@@ -451,28 +451,3 @@ export default {
 
 }
 </script>
-
-<style scoped>
-#balance {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-#balance:hover {
-  text-decoration: none;
-}
-
-.send-tokens-card {
-  width: 500px;
-  margin-top: 25px;
-}
-
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  .send-tokens-card {
-    width: 100%;
-    margin: 5px;
-    margin-top: 15px;
-  }
-}
-</style>

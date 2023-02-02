@@ -1,5 +1,19 @@
 @import "./bootstrap.css";
 
+#balance {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#balance:hover {
+  text-decoration: none;
+}
+
+.balances-card, .send-tokens-card {
+  width: 500px;
+  margin-top: 25px;
+}
+
 .card-img-wallet:hover {
   opacity: 0.5;
 }
@@ -26,4 +40,13 @@
 
 .Vue-Toastification__toast--error {
   background-color: #d33682;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .balances-card, .send-tokens-card {
+    width: 100%;
+    margin: 5px;
+    margin-top: 15px;
+  }
 }
