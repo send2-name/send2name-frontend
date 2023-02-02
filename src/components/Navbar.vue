@@ -98,6 +98,7 @@
           <li><a target="_blank" href="https://punk.domains">.degen (Punk Domains, Polygon)</a></li>
           <li><a target="_blank" href="https://fantomnames.org">.fantom (Fantom Names, Fantom)</a></li>
           <li><a target="_blank" href="https://flr.domains">.flr (Flare Domains, Flare)</a></li>
+          <li><a target="_blank" href="https://giveth.punk.domains">.giveth (Giveth Names, Gnosis Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.gnosis (Punk Domains, Gnosis Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.huwa (Punk Domains, BSC)</a></li>
           <li><a target="_blank" href="https://www.kns.earth">.klima (KNS, Polygon)</a></li>
