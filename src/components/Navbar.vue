@@ -91,6 +91,10 @@
           <li><a target="_blank" href="https://punk.domains">.arbi (Punk Domains, Arbitrum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.arbitrum (Punk Domains, Arbitrum)</a></li>
           <li><a target="_blank" href="https://app.basin.global">.basin (Basin Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.bitcoin (Unstoppable Domains, Ethereum)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.blockchain (Unstoppable Domains, Ethereum)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.crypto (Unstoppable Domains, Ethereum)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.dao (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.degen (Punk Domains, Polygon)</a></li>
           <li><a target="_blank" href="https://fantomnames.org">.fantom (Fantom Names, Fantom)</a></li>
           <li><a target="_blank" href="https://flr.domains">.flr (Flare Domains, Flare)</a></li>
@@ -98,6 +102,8 @@
           <li><a target="_blank" href="https://punk.domains">.huwa (Punk Domains, BSC)</a></li>
           <li><a target="_blank" href="https://www.kns.earth">.klima (KNS, Polygon)</a></li>
           <li><a target="_blank" href="https://punk.domains">.L2 (Punk Domains, Optimism)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.misie (Punk Domains, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.nft (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://optimistic.domains">.op (Optimistic Domains, Optimism)</a></li>
           <li><a target="_blank" href="https://punk.domains">.optimism (Punk Domains, Optimism)</a></li>
           <li><a target="_blank" href="https://punk.domains">.poly (Punk Domains, Polygon)</a></li>
@@ -110,8 +116,11 @@
           <li><a target="_blank" href="https://smol.domains">.smol (Smol Domains, Arbitrum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.spartan (Punk Domains, Optimism)</a></li>
           <li><a target="_blank" href="https://punk.domains">.wagmi (Punk Domains, Optimism)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.wallet (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://twb.punk.domains">.wildbunch (The Wild Bunch Domains, Ethereum)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.x (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.xdai (Punk Domains, Gnosis Chain)</a></li>
+          <li><a target="_blank" href="https://unstoppabledomains.com/">.888 (Unstoppable Domains, Ethereum)</a></li>
         </ul>
       </div>
     </div>
