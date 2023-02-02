@@ -1,5 +1,7 @@
 # Send2.name frontend
 
+Send ERC-20 tokens to any web3 domain.
+
 ## Features
 - [Vue 3](https://v3.vuejs.org/guide/introduction.html#what-is-vue-js) as the foundation
 - [Tailwind CSS](https://tailwindcss.com/docs/installation) for styling
