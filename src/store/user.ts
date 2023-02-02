@@ -16,8 +16,9 @@ export const useUserStore = defineStore({
       address: null,
       chainId: null,
       defaultDomain: null,
-      domainSearchStatus: false, // is a domain search for the connected user in progress?
-      tokenBalances: null
+      domainSearchStatus: false, // is a domain search for the connected user still in progress?
+      tokenBalances: null,
+      tokenLoadingStatus: false // is loading token balances for the connected user still in progress?
     }
   },
 
@@ -32,11 +33,16 @@ export const useUserStore = defineStore({
 
     getTokenBalances(state) {
       return state.tokenBalances;
+    },
+
+    getTokenLoadingStatus(state) {
+      return state.tokenLoadingStatus;
     }
   },
 
   actions: {
     async fetchTokenBalances() {
+      this.tokenLoadingStatus = true;
 
       if (!this.tokenBalances) {
         // if tokenBalances is null, open tokens.json and store the contents in tokenBalances
@@ -62,6 +68,8 @@ export const useUserStore = defineStore({
           }
         }
       }
+
+      this.tokenLoadingStatus = false;
     },
 
     async setDefaultDomain() {

@@ -1,8 +1,11 @@
 <template>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center" v-if="isActivated">
     <div class="card text-white bg-secondary balances-card">
       <div class="card-body text-center">
-        <button class="btn btn-secondary text-uppercase mb-3">Your tokens</button>
+        <button class="btn btn-secondary text-uppercase mb-3">
+          Your tokens
+          <span v-if="userStore.getTokenLoadingStatus" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        </button>
 
         <table class="table table-hover table-secondary table-borderless">
           <tbody>
@@ -31,7 +34,7 @@ export default {
 
       if (tokenBalances && this.chainId) {
         const bArray = Object.entries(tokenBalances[String(this.chainId)]);
-        const filtered = bArray.filter(([key, value]) => Number(value) > 0);
+        const filtered = bArray.filter(([key, value]) => (!String(value).startsWith("0x") && Number(value) > 0));
         return Object.fromEntries(filtered);
       }
 
@@ -40,11 +43,12 @@ export default {
   },
 
   setup() {
-    const { chainId } = useEthers();
+    const { chainId, isActivated } = useEthers();
     const userStore = useUserStore();
 
     return {
       chainId,
+      isActivated,
       userStore
     }
   },
