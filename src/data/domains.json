@@ -19,6 +19,22 @@
     "address": "0x4bF5A99eA2F8De061f7D77BA9edd749503D945Da",
     "protocol": "PD"
   },
+  ".bitcoin": {
+    "chainId": 1,
+    "protocol": "UD"
+  },
+  ".blockchain": {
+    "chainId": 1,
+    "protocol": "UD"
+  },
+  ".crypto": {
+    "chainId": 1,
+    "protocol": "UD"
+  },
+  ".dao": {
+    "chainId": 1,
+    "protocol": "UD"
+  },
   ".degen": {
     "chainId": 137,
     "address": "0xC4999A3e91ef87c9EC5d8186D02B77F9A62458b9",
@@ -36,6 +52,11 @@
   ".flr": {
     "chainId": 14,
     "address": "0xBDACF94dDCAB51c39c2dD50BffEe60Bb8021949a",
+    "protocol": "PD"
+  },
+  ".giveth": {
+    "chainId": 100,
+    "address": "0xEEa3e593CDAf9D18780f9D58BAD142AF6Bd9522a",
     "protocol": "PD"
   },
   ".gnosis": {
@@ -62,6 +83,10 @@
     "chainId": 42161,
     "address": "0x526Ff108F5d422d0e1d6650E2Bc015BBE1fdb058",
     "protocol": "PD"
+  },
+  ".nft": {
+    "chainId": 1,
+    "protocol": "UD"
   },
   ".op": {
     "chainId": 10,
@@ -123,14 +148,26 @@
     "address": "0xC3E8922657686EC63eaaa9FC1Fe06826802e7e0f",
     "protocol": "PD"
   },
+  ".wallet": {
+    "chainId": 1,
+    "protocol": "UD"
+  },
   ".wildbunch": {
     "chainId": 1,
     "address": "0xaa9E5Ade68C9C3Ea967Dc5dde731fd1f797152Cb",
     "protocol": "PD"
   },
+  ".x": {
+    "chainId": 1,
+    "protocol": "UD"
+  },
   ".xdai": {
     "chainId": 100,
     "address": "0xbca24d86e4ad1e011278faefc4ff191a731411ec",
     "protocol": "PD"
+  },
+  ".888": {
+    "chainId": 1,
+    "protocol": "UD"
   }
 }

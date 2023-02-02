@@ -285,27 +285,34 @@ export default {
     async send() {
       this.waiting = true;
       
-      const holder = await this.getDomainHolder(this.receiver);
-      
-      if (!holder || holder === ethers.constants.AddressZero) {
-        this.toast("This name does not have an owner. Sending aborted.", {type: TYPE.ERROR});
+      try {
+        const holder = await this.getDomainHolder(this.receiver);
+        
+        if (!holder || holder === ethers.constants.AddressZero) {
+          this.toast("This name does not have an owner. Sending aborted.", {type: TYPE.ERROR});
+          this.waiting = false;
+          return;
+        }
+
+        if (holder.toLowerCase() === this.address.toLowerCase()) {
+          this.toast("The receiver name is yours. You cannot send tokens to yourself.", {type: TYPE.ERROR});
+          this.waiting = false;
+          return;
+        }
+
+        this.receiverAddress = holder; // set the receiver address
+
+        // send tokens
+        if (this.getTokens[this.selectedToken] === "0x0") {
+          this.sendNativeTokens(); // ETH or other chain native token
+        } else {
+          this.sendErc20Tokens();
+        }
+      } catch (error) {
+        console.log(error);
+        this.toast(error.message, {type: TYPE.ERROR});
         this.waiting = false;
         return;
-      }
-
-      if (holder.toLowerCase() === this.address.toLowerCase()) {
-        this.toast("The receiver name is yours. You cannot send tokens to yourself.", {type: TYPE.ERROR});
-        this.waiting = false;
-        return;
-      }
-
-      this.receiverAddress = holder; // set the receiver address
-
-      // send tokens
-      if (this.getTokens[this.selectedToken] === "0x0") {
-        this.sendNativeTokens(); // ETH or other chain native token
-      } else {
-        this.sendErc20Tokens();
       }
     },
 

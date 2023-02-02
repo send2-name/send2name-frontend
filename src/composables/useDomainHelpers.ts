@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 import { useEthers } from 'vue-dapp';
+import { Resolution } from '@unstoppabledomains/resolution';
 import ResolverAbi from "../data/abi/ResolverAbi.json";
 import domains from '../data/domains.json';
 import resolvers from '../data/resolvers.json';
@@ -17,17 +18,18 @@ export default function useDomainHelpers() {
     console.log("Domain extension:", domainParts[1]);
 
     const domainData = domains["."+domainParts[1]];
-    console.log("Domain data:", domainData.protocol);
 
     if (!domainData) {
       return null;
     }
 
+    console.log("Domain data:", domainData.protocol);
+
     const provider = getFallbackProvider(domainData.chainId);
 
     if (domainData.protocol === "ENS") {
       return provider.resolveName(domain);
-    } else if (domainData.protocol === "PD") {
+    } else if (domainData.protocol === "PD") { // Punk Domains
       const tldInterface = new ethers.utils.Interface([
         "function getDomainHolder(string) public view returns(address)"
       ]);
@@ -35,6 +37,25 @@ export default function useDomainHelpers() {
       const tldContract = new ethers.Contract(domainData.address, tldInterface, provider);
 
       return tldContract.getDomainHolder(domainParts[0]);
+    } else if (domainData.protocol === "UD") { // Unstoppable Domains
+      const resolution = new Resolution({
+        sourceConfig: {
+          uns: {
+            locations: {
+              Layer1: {
+                url: "https://1rpc.io/eth",
+                network: 'mainnet'
+              },
+              Layer2: {
+                url: "https://1rpc.io/matic",
+                network: 'polygon-mainnet',
+              },
+            },
+          },
+        },
+      });
+
+      return resolution.addr(domain, "ETH");
     }
   }
 
