@@ -1,6 +1,6 @@
 <template>
 <div class="d-flex justify-content-center">
-<div class="card text-white bg-primary mb-3 send-tokens-card">
+<div class="card text-white bg-primary send-tokens-card">
   <div class="card-body text-center">
 
     <button
@@ -162,6 +162,8 @@ export default {
 
   created() {
     this.setData();
+
+    this.receiver = this.$route.query.to; // pass receier through URL query (e.g. https://send2.name/?to=techie.op)
   },
 
   computed: {
