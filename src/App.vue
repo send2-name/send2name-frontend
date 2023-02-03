@@ -16,7 +16,7 @@
 				<div class="modal-body row">
 
 					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
-						<img src="./assets/img/wallets/metamask.svg" class="card-img-top card-img-wallet" alt="MetaMask">
+						<img src="./assets/img/wallets/metamask.png" class="card-img-top card-img-wallet" alt="MetaMask">
 					</div>
 
 					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
@@ -35,8 +35,24 @@
 						<img src="./assets/img/wallets/rabby.png" class="card-img-top card-img-wallet" alt="Rabby">
 					</div> 
 
+					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
+						<img src="./assets/img/wallets/brave.png" class="card-img-top card-img-wallet" alt="Brave">
+					</div>
+
 					<div class="card col-6 set-cursor-pointer" @click="connectWalletConnect">
 						<img src="./assets/img/wallets/minerva.png" class="card-img-top card-img-wallet" alt="Minerva">
+					</div>
+
+					<div class="card col-6 set-cursor-pointer" @click="connectWalletConnect">
+						<img src="./assets/img/wallets/argent.png" class="card-img-top card-img-wallet" alt="Argent">
+					</div>
+
+					<div class="card col-6 set-cursor-pointer" @click="connectWalletConnect">
+						<img src="./assets/img/wallets/1inch.png" class="card-img-top card-img-wallet" alt="1inch">
+					</div>
+
+					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
+						<img src="./assets/img/wallets/trust.png" class="card-img-top card-img-wallet" alt="Trust Wallet">
 					</div>
 				</div>
 			</div>

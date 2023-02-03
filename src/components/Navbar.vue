@@ -53,7 +53,13 @@
           </button>
 
           <div class="dropdown-menu dropdown-menu-end set-cursor-pointer">
-            <span class="dropdown-item">{{ shortenAddress(address) }}</span>
+            
+            <a :href="getBlockExplorerBaseUrl(chainId)+'/address/'+address" class="short-address" target="_blank">
+              <span class="dropdown-item">
+                {{ shortenAddress(address) }}
+              </span>
+            </a>
+            
             <span class="dropdown-item" @click="disconnect">Disconnect</span>
           </div>
         </li>
@@ -179,13 +185,14 @@ export default {
     const { open } = useBoard();
 		const { address, chainId, isActivated } = useEthers();
 		const { disconnect } = useWallet();
-		const { getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
+		const { getBlockExplorerBaseUrl, getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
     const userStore = useUserStore();
 
 		return {
 			address,
 			chainId,
 			disconnect,
+      getBlockExplorerBaseUrl,
 			getChainName,
 			getSupportedChains,
 			isActivated,
@@ -205,5 +212,9 @@ export default {
 
 .network-dropdown::first-letter {
   text-transform: uppercase;
+}
+
+.short-address {
+  text-decoration: none;
 }
 </style>
