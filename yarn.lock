@@ -3464,6 +3464,11 @@
   "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.13.11.tgz"
   "version" "0.13.11"
 
+"vue-gtag@^2.0.1":
+  "integrity" "sha512-aM4A58FVL0wV2ptYi+xzAjeg+pQVRyUcfBc5UkXAwQrR4t3WBhor50Izp2I+3Oo7+l+vWJ7u78DGcNzReb8S/A=="
+  "resolved" "https://registry.npmjs.org/vue-gtag/-/vue-gtag-2.0.1.tgz"
+  "version" "2.0.1"
+
 "vue-router@4":
   "integrity" "sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.1.6.tgz"
@@ -3476,7 +3481,7 @@
   "resolved" "https://registry.npmjs.org/vue-toastification/-/vue-toastification-2.0.0-rc.5.tgz"
   "version" "2.0.0-rc.5"
 
-"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.2", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.45", "vue@>=3.2.0", "vue@3.2.45":
+"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.2", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.45", "vue@>=3.2.0", "vue@3.2.45":
   "integrity" "sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.45.tgz"
   "version" "3.2.45"

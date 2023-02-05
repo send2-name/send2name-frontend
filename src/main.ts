@@ -3,9 +3,9 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 import { VueDapp } from 'vue-dapp';
+import VueGtag from "vue-gtag";
 import Toast, { POSITION, TYPE } from "vue-toastification";
 import "vue-toastification/dist/index.css";
-
 import './assets/css/custom.css';
 
 const pinia = createPinia();
@@ -28,6 +28,15 @@ const toastOptions = {
 }
 
 app.use(Toast, toastOptions);
+
+app.use(VueGtag, {
+  config: { 
+    id: "G-MXWJ4EGXD9",
+    params: {
+      anonymize_ip: true
+    }
+  }
+});
 
 app.use(router);
 

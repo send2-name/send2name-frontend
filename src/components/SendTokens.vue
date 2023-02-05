@@ -358,6 +358,8 @@ export default {
           this.waiting = false;
           this.getTokenBalance(sToken);
 
+          this.$gtag.event('send-tokens-success'); // just to measure the usage of the app, without any additional data involved
+
         } else {
           this.toast.dismiss(toastWait);
 
@@ -414,6 +416,7 @@ export default {
           });
           this.waiting = false;
           this.getTokenBalance(sToken);
+          this.$gtag.event('send-tokens-success'); // just to measure the usage of the app, without any additional data involved
         } else {
           this.toast.dismiss(toastWait);
           this.toast("Transaction has failed.", {
