@@ -54,6 +54,10 @@
 					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
 						<img src="./assets/img/wallets/trust.png" class="card-img-top card-img-wallet" alt="Trust Wallet">
 					</div>
+
+					<div class="card col-6 set-cursor-pointer" @click="connectMetaMask">
+						<img src="./assets/img/wallets/imtoken.png" class="card-img-top card-img-wallet" alt="imToken">
+					</div>
 				</div>
 			</div>
 		</div>
