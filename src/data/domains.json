@@ -40,6 +40,11 @@
     "address": "0xC4999A3e91ef87c9EC5d8186D02B77F9A62458b9",
     "protocol": "PD"
   },
+  ".dope": {
+    "chainId": 10,
+    "address": "0x1d33989185AA79a3B9173bC7B1137E527C6A262b",
+    "protocol": "PD"
+  },
   ".eth": {
     "chainId": 1,
     "protocol": "ENS"
