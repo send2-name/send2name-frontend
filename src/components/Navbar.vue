@@ -93,30 +93,30 @@
 
         <ul>
           <li><a target="_blank" href="https://ens.domains">.eth (ENS, Ethereum)</a></li>
-          <li><a target="_blank" href="https://punk.domains">.ape (Punk Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.ape (Punk Domains, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.arbi (Punk Domains, Arbitrum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.arbitrum (Punk Domains, Arbitrum)</a></li>
-          <li><a target="_blank" href="https://app.basin.global">.basin (Basin, Polygon)</a></li>
+          <li><a target="_blank" href="https://app.basin.global">.basin (Basin, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.bitcoin (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.blockchain (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.crypto (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.dao (Unstoppable Domains, Ethereum)</a></li>
-          <li><a target="_blank" href="https://punk.domains">.degen (Punk Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.degen (Punk Domains, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://dns.dopewars.gg">.dope (Dope DAO, Optimism)</a></li>
           <li><a target="_blank" href="https://fantomnames.org">.fantom (Fantom Names, Fantom)</a></li>
-          <li><a target="_blank" href="https://flr.domains">.flr (Flare Network, Flare)</a></li>
+          <li><a target="_blank" href="https://flr.domains">.flr (Flare Domains, Flare Network)</a></li>
           <li><a target="_blank" href="https://giveth.punk.domains">.giveth (Giveth DAO, Gnosis Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.gnosis (Punk Domains, Gnosis Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.huwa (HUWA DAO, BSC)</a></li>
-          <li><a target="_blank" href="https://www.kns.earth">.klima (Klima DAO, Polygon)</a></li>
+          <li><a target="_blank" href="https://www.kns.earth">.klima (Klima DAO, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.L2 (Layer2 DAO, Optimism)</a></li>
           <li><a target="_blank" href="https://punk.domains">.misie (Misie Community, Arbitrum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.nft (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://optimistic.domains">.op (Optimistic Domains, Optimism)</a></li>
           <li><a target="_blank" href="https://punk.domains">.optimism (Punk Domains, Optimism)</a></li>
-          <li><a target="_blank" href="https://punk.domains">.poly (Punk Domains, Polygon)</a></li>
+          <li><a target="_blank" href="https://punk.domains">.poly (Punk Domains, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://names.pooly.me">.pool (PoolTogether DAO, Optimism)</a></li>
-          <li><a target="_blank" href="https://ppl.domains">.ppl (Lufroloc Dishes, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://ppl.domains">.ppl (People Domains, Arbitrum)</a></li>
           <li><a target="_blank" href="https://punk.domains/#/punkangel">.punkangel (Punk Domains, Arbitrum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.safu (Punk Domains, BSC)</a></li>
           <li><a target="_blank" href="https://id.satraps.io">.satrap (Satrap IDs, Songbird)</a></li>
