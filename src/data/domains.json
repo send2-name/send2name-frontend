@@ -14,6 +14,11 @@
     "address": "0x337EB5061943ECd247649d58D35Dbab0b40D67E0",
     "protocol": "PD"
   },
+  ".basebook": {
+    "chainId": 8453,
+    "address": "0x4087fb91A1fBdef05761C02714335D232a2Bf3a1",
+    "protocol": "PD"
+  },
   ".basin": {
     "chainId": 137,
     "address": "0x4bF5A99eA2F8De061f7D77BA9edd749503D945Da",

@@ -11,6 +11,7 @@ export default function useChainHelpers() {
   function getSupportedChains() {
     return [
       "Arbitrum".toUpperCase(),
+      "Base".toUpperCase(),
       "BNB Smart Chain".toUpperCase(),
       "Ethereum".toUpperCase(),
       "Fantom".toUpperCase(),
@@ -48,6 +49,8 @@ export default function useChainHelpers() {
       return "Fantom".toUpperCase();
     } else if (chainId === 4002) {
       return "Fantom Testnet".toUpperCase();
+    } else if (chainId === 8453) {
+      return "Base".toUpperCase();
     } else if (chainId === 42161) {
       return "Arbitrum".toUpperCase();
     } else if (chainId === 421611) {
@@ -224,6 +227,15 @@ export default function useChainHelpers() {
         chainName: "Flare",
         nativeCurrency: { decimals: 18, name: "FLR", symbol: "FLR" }, 
         rpcUrls: ["https://flare-api.flare.network/ext/C/rpc"]
+      }] 
+    } else if (networkName == "Base".toUpperCase()) {
+      method = "wallet_addEthereumChain"
+      params = [{ 
+        blockExplorerUrls: [ "https://basescan.org" ],
+        chainId: "0x2105",
+        chainName: "Base",
+        nativeCurrency: { decimals: 18, name: "FLR", symbol: "FLR" }, 
+        rpcUrls: ["https://mainnet.base.org"]
       }] 
     }
 

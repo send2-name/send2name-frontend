@@ -96,6 +96,7 @@
           <li><a target="_blank" href="https://punk.domains">.ape (Punk Domains, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.arbi (Punk Domains, Arbitrum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.arbitrum (Punk Domains, Arbitrum)</a></li>
+          <li><a target="_blank" href="https://id.basebook.xyz">.basebook (Basebook, Base)</a></li>
           <li><a target="_blank" href="https://app.basin.global">.basin (Basin, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.bitcoin (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.blockchain (Unstoppable Domains, Ethereum)</a></li>
