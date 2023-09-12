@@ -234,7 +234,7 @@ export default function useChainHelpers() {
         blockExplorerUrls: [ "https://basescan.org" ],
         chainId: "0x2105",
         chainName: "Base",
-        nativeCurrency: { decimals: 18, name: "FLR", symbol: "FLR" }, 
+        nativeCurrency: { decimals: 18, name: "ETH", symbol: "ETH" }, 
         rpcUrls: ["https://mainnet.base.org"]
       }] 
     }
