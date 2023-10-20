@@ -19,6 +19,16 @@
     "address": "0x4087fb91A1fBdef05761C02714335D232a2Bf3a1",
     "protocol": "PD"
   },
+  ".based": {
+    "chainId": 8453,
+    "address": "0x273dB54929d8392c1997Be361Da89D41af202a49",
+    "protocol": "PD"
+  },
+  ".basepunk": {
+    "chainId": 8453,
+    "address": "0xc2C543D39426bfd1dB66bBde2Dd9E4a5c7212876",
+    "protocol": "PD"
+  },
   ".basin": {
     "chainId": 137,
     "address": "0x4bF5A99eA2F8De061f7D77BA9edd749503D945Da",
