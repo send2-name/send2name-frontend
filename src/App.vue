@@ -118,7 +118,7 @@ export default {
 		const userStore = useUserStore();
 
 		const coinbaseConnector = new CoinbaseWalletConnector({
-			appName: 'Vue Dapp',
+			appName: 'Send2.name',
 			jsonRpcUrl: rpcs["1"],
 		});
 
