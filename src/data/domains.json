@@ -1,4 +1,14 @@
 {
+  ".alkroma": {
+    "chainId": 255,
+    "address": "0x6c66f1d5684630fb69350a7a88bcca60629d7252",
+    "protocol": "PD"
+  },
+  ".alscroll": {
+    "chainId": 534352,
+    "address": "0x4087fb91A1fBdef05761C02714335D232a2Bf3a1",
+    "protocol": "PD"
+  },
   ".ape": {
     "chainId": 137,
     "address": "0x794a8390D94E32b086908D2bA9D66300aA163C62",

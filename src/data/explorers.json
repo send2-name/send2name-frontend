@@ -8,8 +8,10 @@
   "100": "https://gnosisscan.io",
   "137": "https://polygonscan.com",
   "250": "https://ftmscan.com",
+  "255": "https://kromascan.com",
   "8453": "https://basescan.org",
   "42161": "https://arbiscan.io",
   "43114": "https://snowtrace.io",
-  "80001": "https://mumbai.polygonscan.com"
+  "80001": "https://mumbai.polygonscan.com",
+  "534352": "https://scrollscan.com"
 }

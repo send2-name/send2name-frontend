@@ -17,8 +17,10 @@ export default function useChainHelpers() {
       "Fantom".toUpperCase(),
       "Flare".toUpperCase(),
       "Gnosis Chain".toUpperCase(),
+      "Kroma".toUpperCase(),
       "Optimism".toUpperCase(),
       "Polygon".toUpperCase(),
+      "Scroll".toUpperCase(),
       "Songbird".toUpperCase(),
       "Coston Testnet".toUpperCase()
     ]
@@ -47,6 +49,8 @@ export default function useChainHelpers() {
       return "Polygon".toUpperCase();
     } else if (chainId === 250) {
       return "Fantom".toUpperCase();
+    } else if (chainId === 255) {
+      return "Kroma".toUpperCase();
     } else if (chainId === 4002) {
       return "Fantom Testnet".toUpperCase();
     } else if (chainId === 8453) {
@@ -59,6 +63,8 @@ export default function useChainHelpers() {
       return "Arbitrum Goerli Testnet".toUpperCase();
     } else if (chainId === 80001) {
       return "Polygon Testnet".toUpperCase();
+    } else if (chainId === 534352) {
+      return "Scroll".toUpperCase();
     } else if (chainId === 1313161555) {
       return "Aurora Testnet".toUpperCase();
     } else {
@@ -236,6 +242,24 @@ export default function useChainHelpers() {
         chainName: "Base",
         nativeCurrency: { decimals: 18, name: "ETH", symbol: "ETH" }, 
         rpcUrls: ["https://mainnet.base.org"]
+      }] 
+    } else if (networkName == "Kroma".toUpperCase()) {
+      method = "wallet_addEthereumChain"
+      params = [{ 
+        blockExplorerUrls: [ "https://kromascan.com" ],
+        chainId: "0xff",
+        chainName: "Kroma",
+        nativeCurrency: { decimals: 18, name: "ETH", symbol: "ETH" }, 
+        rpcUrls: ["https://api.kroma.network"]
+      }] 
+    } else if (networkName == "Scroll".toUpperCase()) {
+      method = "wallet_addEthereumChain"
+      params = [{ 
+        blockExplorerUrls: [ "https://scrollscan.com" ],
+        chainId: "0x82750",
+        chainName: "Scroll",
+        nativeCurrency: { decimals: 18, name: "ETH", symbol: "ETH" }, 
+        rpcUrls: ["https://rpc.scroll.io"]
       }] 
     }
 

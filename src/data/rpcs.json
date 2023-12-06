@@ -8,9 +8,11 @@
   "100": "https://rpc.gnosischain.com",
   "137": "https://polygon-mainnet.public.blastapi.io",
   "250": "https://fantom-mainnet.public.blastapi.io",
+  "255": "https://api.kroma.network",
   "592": "https://1rpc.io/astr",
   "1284": "https://1rpc.io/glmr",
   "8453": "https://mainnet.base.org",
   "42161": "https://arbitrum.meowrpc.com",
-  "43114": "https://1rpc.io/avax/c"
+  "43114": "https://1rpc.io/avax/c",
+  "534352": "https://rpc.scroll.io"
 }
