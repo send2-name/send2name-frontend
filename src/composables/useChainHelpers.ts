@@ -22,6 +22,7 @@ export default function useChainHelpers() {
       "Polygon".toUpperCase(),
       "Scroll".toUpperCase(),
       "Songbird".toUpperCase(),
+      "ZKFair".toUpperCase(),
       "Coston Testnet".toUpperCase()
     ]
   }
@@ -57,6 +58,8 @@ export default function useChainHelpers() {
       return "Base".toUpperCase();
     } else if (chainId === 42161) {
       return "Arbitrum".toUpperCase();
+    } else if (chainId === 42766) {
+      return "ZKFair".toUpperCase();
     } else if (chainId === 421611) {
       return "Arbitrum Testnet".toUpperCase();
     } else if (chainId === 421613) {
@@ -260,6 +263,15 @@ export default function useChainHelpers() {
         chainName: "Scroll",
         nativeCurrency: { decimals: 18, name: "ETH", symbol: "ETH" }, 
         rpcUrls: ["https://rpc.scroll.io"]
+      }] 
+    } else if (networkName == "ZKFair".toUpperCase()) {
+      method = "wallet_addEthereumChain"
+      params = [{ 
+        blockExplorerUrls: [ "https://scan.zkfair.io" ],
+        chainId: "0xa70e",
+        chainName: "ZKFair",
+        nativeCurrency: { decimals: 18, name: "USDC", symbol: "USDC" }, 
+        rpcUrls: ["https://rpc.zkfair.io"]
       }] 
     }
 

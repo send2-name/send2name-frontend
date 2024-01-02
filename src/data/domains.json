@@ -74,6 +74,11 @@
     "chainId": 1,
     "protocol": "ENS"
   },
+  ".fairchat": {
+    "chainId": 42766,
+    "address": "0x4087fb91A1fBdef05761C02714335D232a2Bf3a1",
+    "protocol": "PD"
+  },
   ".fantom": {
     "chainId": 250,
     "address": "0xbdacf94ddcab51c39c2dd50bffee60bb8021949a",
