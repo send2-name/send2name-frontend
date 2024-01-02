@@ -106,6 +106,7 @@
           <li><a target="_blank" href="https://unstoppabledomains.com/">.dao (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://punk.domains">.degen (Punk Domains, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://dns.dopewars.gg">.dope (Dope DAO, Optimism)</a></li>
+          <li><a target="_blank" href="https://fairchat.xyz">.fairchat (Fairchat, ZKFair)</a></li>
           <li><a target="_blank" href="https://fantomname.org">.fantom (Fantom Names, Fantom)</a></li>
           <li><a target="_blank" href="https://flr.domains">.flr (Flare Domains, Flare Network)</a></li>
           <li><a target="_blank" href="https://giveth.punk.domains">.giveth (Giveth DAO, Gnosis Chain)</a></li>
