@@ -11,6 +11,7 @@ export default function useChainHelpers() {
   function getSupportedChains() {
     return [
       "Arbitrum".toUpperCase(),
+      "Arbitrum Nova".toUpperCase(),
       "Base".toUpperCase(),
       "BNB Smart Chain".toUpperCase(),
       "Ethereum".toUpperCase(),
@@ -58,6 +59,8 @@ export default function useChainHelpers() {
       return "Base".toUpperCase();
     } else if (chainId === 42161) {
       return "Arbitrum".toUpperCase();
+    } else if (chainId === 42170) {
+      return "Arbitrum Nova".toUpperCase();
     } else if (chainId === 42766) {
       return "ZKFair".toUpperCase();
     } else if (chainId === 421611) {
@@ -128,6 +131,15 @@ export default function useChainHelpers() {
         chainName: "Arbitrum One",
         nativeCurrency: { decimals: 18, name: "ETH", symbol: "ETH" }, 
         rpcUrls: ["https://1rpc.io/arb"]
+      }] 
+    } else if (networkName == "Arbitrum Nova".toUpperCase()) {
+      method = "wallet_addEthereumChain"
+      params = [{ 
+        blockExplorerUrls: [ "https://nova.arbiscan.io" ],
+        chainId: "0xa4ba",
+        chainName: "Arbitrum Nova",
+        nativeCurrency: { decimals: 18, name: "ETH", symbol: "ETH" }, 
+        rpcUrls: ["https://nova.arbitrum.io/rpc"]
       }] 
     } else if (networkName == "Optimism".toUpperCase()) {
       method = "wallet_addEthereumChain"

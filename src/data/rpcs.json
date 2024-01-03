@@ -12,7 +12,8 @@
   "592": "https://1rpc.io/astr",
   "1284": "https://1rpc.io/glmr",
   "8453": "https://mainnet.base.org",
-  "42161": "https://arbitrum.meowrpc.com",
+  "42161": "https://rpc.ankr.com/arbitrum",
+  "42170": "https://nova.arbitrum.io/rpc",
   "42766": "https://rpc.zkfair.io",
   "43114": "https://1rpc.io/avax/c",
   "534352": "https://rpc.scroll.io"
