@@ -168,6 +168,11 @@
     "address": "0xeFBE0b46649B7A0F1e1D49CCa98aD9CF6bcFB096",
     "protocol": "PD"
   },
+  ".scrolly": {
+    "chainId": 534352,
+    "address": "0xc2C543D39426bfd1dB66bBde2Dd9E4a5c7212876",
+    "protocol": "PD"
+  },
   ".sgb": {
     "chainId": 19,
     "address": "0xBDACF94dDCAB51c39c2dD50BffEe60Bb8021949a",
