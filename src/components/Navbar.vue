@@ -60,7 +60,7 @@
               </span>
             </a>
             
-            <span class="dropdown-item" @click="disconnect">Disconnect</span>
+            <span class="dropdown-item" @click="disconnectWallet">Disconnect</span>
           </div>
         </li>
 
@@ -104,7 +104,7 @@
           <li><a target="_blank" href="https://unstoppabledomains.com/">.blockchain (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.crypto (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.dao (Unstoppable Domains, Ethereum)</a></li>
-          <li><a target="_blank" href="https://punk.domains">.degen (Punk Domains, Polygon PoS Chain)</a></li>
+          <li><a target="_blank" href="https://nftdegen.lol">.degen (NFTdegen.lol, Degen L3 Chain)</a></li>
           <li><a target="_blank" href="https://dns.dopewars.gg">.dope (Dope DAO, Optimism)</a></li>
           <li><a target="_blank" href="https://fairchat.xyz">.fairchat (Fairchat, ZKFair)</a></li>
           <li><a target="_blank" href="https://fantomname.org">.fantom (Fantom Names, Fantom)</a></li>
@@ -177,12 +177,12 @@ export default {
 
   methods: {
     changeNetwork(networkName) {
-      const networkData = this.switchNetwork(networkName); 
+      this.switchOrAddChain(window.ethereum, networkName);
+    },
 
-      window.ethereum.request({ 
-        method: networkData.method, 
-        params: networkData.params
-      });
+    disconnectWallet() {
+      this.disconnect();
+      window.localStorage.removeItem("connected");
     }
   },
 
@@ -190,7 +190,7 @@ export default {
     const { open } = useBoard();
 		const { address, chainId, isActivated } = useEthers();
 		const { disconnect } = useWallet();
-		const { getBlockExplorerBaseUrl, getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
+		const { getBlockExplorerBaseUrl, getChainName, getSupportedChains, switchOrAddChain } = useChainHelpers();
     const userStore = useUserStore();
 
 		return {
@@ -203,7 +203,7 @@ export default {
 			isActivated,
 			open,
 			shortenAddress,
-			switchNetwork,
+			switchOrAddChain,
       userStore
 		}
   },

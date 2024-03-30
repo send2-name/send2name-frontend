@@ -3,11 +3,10 @@ import { useEthers } from 'vue-dapp';
 import { Resolution } from '@unstoppabledomains/resolution';
 import ResolverAbi from "../data/abi/ResolverAbi.json";
 import domains from '../data/domains.json';
-import resolvers from '../data/resolvers.json';
 import useChainHelpers from "./useChainHelpers";
 
 const { chainId, signer } = useEthers();
-const { getFallbackProvider } = useChainHelpers();
+const { getFallbackProvider, getResolvers } = useChainHelpers();
 
 export default function useDomainHelpers() {
 
@@ -68,22 +67,22 @@ export default function useDomainHelpers() {
   async function getPunkDomain(address) {
     let defaultDomain = null;
     const intfc = new ethers.utils.Interface(ResolverAbi);
-    let resolverAddress = resolvers[chainId.value];
+    let resolverAddress = getResolvers[chainId.value];
 
     if (resolverAddress) {
-      const contract = new ethers.Contract(resolvers[chainId.value], intfc, signer.value);
+      const contract = new ethers.Contract(getResolvers[chainId.value], intfc, signer.value);
 
       // check if user owns a PD on a currently connected chain
       defaultDomain = await contract.getFirstDefaultDomain(address);
     }
 
     if (!defaultDomain) {
-      for (let netId in resolvers) {
+      for (let netId in getResolvers) {
         console.log("Punk Domain search on chain with ID", netId);
 
         if (Number(netId) != chainId.value) {
           let provider = getFallbackProvider(netId);
-          let contractResolver = new ethers.Contract(resolvers[netId], intfc, provider);
+          let contractResolver = new ethers.Contract(getResolvers[netId], intfc, provider);
 
           defaultDomain = await contractResolver.getFirstDefaultDomain(address);
 

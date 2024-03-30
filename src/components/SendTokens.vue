@@ -241,12 +241,7 @@ export default {
 
   methods: {
     changeNetwork(networkName) {
-      const networkData = this.switchNetwork(networkName); 
-
-      window.ethereum.request({ 
-        method: networkData.method, 
-        params: networkData.params
-      });
+      this.switchOrAddChain(window.ethereum, networkName);
     },
 
     async getTokenBalance(tokenName) {
@@ -437,13 +432,13 @@ export default {
   setup() {
     const { open } = useBoard();
     const { address, balance, chainId, isActivated, signer } = useEthers();
-    const { getBlockExplorerBaseUrl, getChainName, getSupportedChains, switchNetwork } = useChainHelpers();
+    const { getBlockExplorerBaseUrl, getChainName, getSupportedChains, switchOrAddChain } = useChainHelpers();
     const { getDomainHolder } = useDomainHelpers();
     const toast = useToast();
 
     return { 
       address, balance, chainId, getBlockExplorerBaseUrl, getChainName, getDomainHolder, getSupportedChains, 
-      isActivated, open, signer, switchNetwork, toast 
+      isActivated, open, signer, switchOrAddChain, toast 
     }
   },
 
