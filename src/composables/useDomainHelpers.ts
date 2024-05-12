@@ -6,15 +6,15 @@ import domains from '../data/domains.json';
 import useChainHelpers from "./useChainHelpers";
 
 const { chainId, signer } = useEthers();
-const { getFallbackProvider, getResolvers } = useChainHelpers();
+const { getFallbackProvider, getResolver, getResolversList } = useChainHelpers();
 
 export default function useDomainHelpers() {
 
   async function getDomainHolder(domain) {
     const domainParts = domain.toLowerCase().split(".");
 
-    console.log("Domain name:", domainParts[0]);
-    console.log("Domain extension:", domainParts[1]);
+    //console.log("Domain name:", domainParts[0]);
+    //console.log("Domain extension:", domainParts[1]);
 
     const domainData = domains["."+domainParts[1]];
 
@@ -22,7 +22,7 @@ export default function useDomainHelpers() {
       return null;
     }
 
-    console.log("Domain data:", domainData.protocol);
+    //console.log("Domain data:", domainData.protocol);
 
     const provider = getFallbackProvider(domainData.chainId);
 
@@ -67,22 +67,20 @@ export default function useDomainHelpers() {
   async function getPunkDomain(address) {
     let defaultDomain = null;
     const intfc = new ethers.utils.Interface(ResolverAbi);
-    let resolverAddress = getResolvers[chainId.value];
+    let resolverAddress = getResolver(chainId.value);
 
     if (resolverAddress) {
-      const contract = new ethers.Contract(getResolvers[chainId.value], intfc, signer.value);
+      const contract = new ethers.Contract(getResolver(chainId.value), intfc, signer.value);
 
       // check if user owns a PD on a currently connected chain
       defaultDomain = await contract.getFirstDefaultDomain(address);
     }
 
     if (!defaultDomain) {
-      for (let netId in getResolvers) {
-        console.log("Punk Domain search on chain with ID", netId);
-
+      for (let netId in getResolversList) {
         if (Number(netId) != chainId.value) {
           let provider = getFallbackProvider(netId);
-          let contractResolver = new ethers.Contract(getResolvers[netId], intfc, provider);
+          let contractResolver = new ethers.Contract(getResolver(netId), intfc, provider);
 
           defaultDomain = await contractResolver.getFirstDefaultDomain(address);
 

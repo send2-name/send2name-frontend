@@ -78,25 +78,16 @@ export const useUserStore = defineStore({
 
         this.fetchTokenBalances(); // also fetch token balances
 
-        console.log("start searching for domain");
         this.defaultDomain = null;
         this.address = address.value;
         this.chainId = chainId.value;
 
-        console.log("start Punk Domain (PD) search");
-
         // first check if user owns a punk domain
         this.defaultDomain = await getPunkDomain(this.address);
 
-        console.log("PD search result:", this.defaultDomain);
-
         if (!this.defaultDomain) {
-          console.log("Start ENS search");
-
           // ENS
           this.defaultDomain = await getEnsDomain(this.address);
-
-          console.log("ENS search result:", this.defaultDomain);
 
           // @todo
           // if no ENS domain found, check UD

@@ -29,7 +29,12 @@ export default function useChainHelpers() {
     }
   }
 
-  function getResolvers() {
+  function getResolver(chainId) {
+    let chain = chains.find(chain => chain.chainId == chainId);
+    return chain.resolver;
+  }
+
+  function getResolversList() {
     let resolvers = chains.map(chain => chain.resolver);
     return resolvers;
   }
@@ -82,13 +87,15 @@ export default function useChainHelpers() {
     getBlockExplorerBaseUrl,
     getChainName,
     getFallbackProvider,
-    getResolvers,
+    getResolver,
+    getResolversList,
     getSupportedChains,
     switchOrAddChain
   }
 }
 
 const chains = [
+  { chainId: 666666666, name: "Degen", currency: "DEGEN", rpc1: "https://rpc.degen.tips", rpc2: "https://rpc.degen.tips", blockExplorer: "https://explorer.degen.tips", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
   { chainId: 1, name: "Ethereum", currency: "ETH", rpc1: "https://rpc.ankr.com/eth", rpc2: "https://1rpc.io/eth", blockExplorer: "https://etherscan.io", resolver: "0x985ecBD12566dD8BC05F4Df96729Ee84dE67F519" },
   { chainId: 10, name: "Optimism", currency: "ETH", rpc1: "https://optimism-mainnet.public.blastapi.io", rpc2: "https://rpc.ankr.com/optimism", blockExplorer: "https://optimistic.etherscan.io", resolver: "0xF20fc12a4955c9d47194B8fEd591Fe01777D2b06" },
   { chainId: 14, name: "Flare", currency: "FLR", rpc1: "https://flare-api.flare.network/ext/C/rpc", rpc2: "https://flare-api.flare.network/ext/C/rpc", blockExplorer: "https://flare-explorer.flare.network", resolver: "0x2919f0bE09549814ADF72fb0387D1981699fc6D4" },
@@ -105,5 +112,4 @@ const chains = [
   { chainId: 42766, name: "ZKFair", currency: "USDC", rpc1: "https://rpc.zkfair.io", rpc2: "https://rpc.zkfair.io", blockExplorer: "https://scan.zkfair.io", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
   { chainId: 81457, name: "Blast", currency: "ETH", rpc1: "https://rpc.blast.io", rpc2: "https://rpc.ankr.com/blast", blockExplorer: "https://blastscan.io", resolver: "0x0F081cad5BCed7B2acA1c1D22CdafcB21322B280" },
   { chainId: 534352, name: "Scroll", currency: "ETH", rpc1: "https://rpc.scroll.io", rpc2: "https://1rpc.io/scroll", blockExplorer: "https://scrollscan.com", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
-  { chainId: 666666666, name: "Degen", currency: "DEGEN", rpc1: "https://rpc.degen.tips", rpc2: "https://rpc.degen.tips", blockExplorer: "https://explorer.degen.tips", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
 ];
