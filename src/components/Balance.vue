@@ -11,7 +11,7 @@
           <tbody>
             <tr v-for="(tokenBalance, tokenTicker) in getCurrentChainTokens" :key="tokenTicker">
               <td>{{ tokenTicker }}</td>
-              <td>{{ Math.round( tokenBalance * 10000 + Number.EPSILON ) / 10000 }}</td>
+              <td>{{ Number.parseFloat(tokenBalance) }}</td>
               <!--<td>Swap</td> -->
             </tr>
           </tbody>
