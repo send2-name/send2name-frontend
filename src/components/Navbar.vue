@@ -114,6 +114,7 @@
           <li><a target="_blank" href="https://punk.domains">.huwa (HUWA DAO, BSC)</a></li>
           <li><a target="_blank" href="https://www.kns.earth">.klima (Klima DAO, Polygon PoS Chain)</a></li>
           <li><a target="_blank" href="https://punk.domains">.L2 (Layer2 DAO, Optimism)</a></li>
+          <li><a target="_blank" href="https://meow.domains">.meow (Meow Domains, Superposition)</a></li>
           <li><a target="_blank" href="https://punk.domains">.misie (Misie Community, Arbitrum)</a></li>
           <li><a target="_blank" href="https://unstoppabledomains.com/">.nft (Unstoppable Domains, Ethereum)</a></li>
           <li><a target="_blank" href="https://optimistic.domains">.op (Optimistic Domains, Optimism)</a></li>

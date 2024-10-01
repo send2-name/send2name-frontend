@@ -110,6 +110,7 @@ const chains = [
   { chainId: 42161, name: "Arbitrum", currency: "ETH", rpc1: "https://rpc.ankr.com/arbitrum", rpc2: "https://rpc.ankr.com/arbitrum", blockExplorer: "https://arbiscan.io", resolver: "0xd64A2DF9d73CD1Cb50139A3eC3176070e00C67cA" },
   { chainId: 42170, name: "Arbitrum Nova", currency: "ETH", rpc1: "https://arbitrum-nova.public.blastapi.io", rpc2: "https://nova.arbitrum.io/rpc", blockExplorer: "https://nova.arbiscan.io", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
   { chainId: 42766, name: "ZKFair", currency: "USDC", rpc1: "https://rpc.zkfair.io", rpc2: "https://rpc.zkfair.io", blockExplorer: "https://scan.zkfair.io", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
+  { chainId: 55244, name: "Superposition", currency: "ETH", rpc1: "https://rpc.superposition.so", rpc2: "https://rpc.superposition.so", blockExplorer: "https://explorer.superposition.so", resolver: "0xC6c17896fa051083324f2aD0Ed4555dC46D96E7f" },
   { chainId: 81457, name: "Blast", currency: "ETH", rpc1: "https://rpc.blast.io", rpc2: "https://rpc.ankr.com/blast", blockExplorer: "https://blastscan.io", resolver: "0x0F081cad5BCed7B2acA1c1D22CdafcB21322B280" },
   { chainId: 534352, name: "Scroll", currency: "ETH", rpc1: "https://rpc.scroll.io", rpc2: "https://1rpc.io/scroll", blockExplorer: "https://scrollscan.com", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
 ];
