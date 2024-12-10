@@ -95,7 +95,7 @@ export default function useChainHelpers() {
 }
 
 const chains = [
-  { chainId: 666666666, name: "Degen", currency: "DEGEN", rpc1: "https://rpc.degen.tips", rpc2: "https://rpc.degen.tips", blockExplorer: "https://explorer.degen.tips", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
+  { chainId: 666666666, name: "Degen", currency: "DEGEN", rpc1: "https://degen-mainnet.g.alchemy.com/v2/Vn3jRzC23Ej4LYpz_TVNs20T9r-LigaO", rpc2: "https://rpc.degen.tips", blockExplorer: "https://explorer.degen.tips", resolver: "0xeA2f99fE93E5D07F61334C5Eb9c54c5D5C957a6a" },
   { chainId: 1, name: "Ethereum", currency: "ETH", rpc1: "https://rpc.ankr.com/eth", rpc2: "https://1rpc.io/eth", blockExplorer: "https://etherscan.io", resolver: "0x985ecBD12566dD8BC05F4Df96729Ee84dE67F519" },
   { chainId: 10, name: "Optimism", currency: "ETH", rpc1: "https://optimism-mainnet.public.blastapi.io", rpc2: "https://rpc.ankr.com/optimism", blockExplorer: "https://optimistic.etherscan.io", resolver: "0xF20fc12a4955c9d47194B8fEd591Fe01777D2b06" },
   { chainId: 14, name: "Flare", currency: "FLR", rpc1: "https://flare-api.flare.network/ext/C/rpc", rpc2: "https://flare-api.flare.network/ext/C/rpc", blockExplorer: "https://flare-explorer.flare.network", resolver: "0x2919f0bE09549814ADF72fb0387D1981699fc6D4" },
